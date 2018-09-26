@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box1 {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin-top:  200px;
+		}
+
+		#box2 {
+			width: 200px;
+			height: 200px;
+			background-color: green;
+			margin-top: 600px;
+			transition: all .5s;
+		}
+	</style>
+</head>
+<body>
+	<a href="#box1">我跳到box1</a>
+	<a href="#box2">我跳到box2</a>
+
+	<div id="box1"></div>
+	<div id="box2"></div>
+</body>
+</html>
+<script src="./lib/jquery/jquery.js"></script>
+<script>
+	// $('a').on('click',function(e){
+
+	// 	//阻止a标签的默认行为跳转,这样就不会把#判断符带入到url中
+	// 	e = e || window.event;
+	// 	e.preventDefault();
+
+	// 	// 获取id号,得到是#box1
+	// 	var target = $(this).prop('hash');
+
+	// 	//将页面滚动到对应的位置
+	// 	$('html,body').animate({
+	// 		scrollTop : $(target).offset().top
+	// 	},500);
+	// });
+
+
+	var aList  = document.querySelectorAll('a');
+	//给每一个a标签注册点击事件
+	for( var i=0;i < aList.length;i++){
+		aList[i].addEventListener('click', function(e){
+
+			//阻止a标签的默认行为
+			e = e || window.event;
+			e.preventDefault();
+
+			//获取整个href路径
+			var target = this.href;
+			//获取#片段识别符
+			var target = this.hash;
+
+			//获取box参照于body定位的top值
+			var offsetTop = document.querySelector(target).offsetTop;
+			//将页面跳转到对应的位置
+			document.documentElement.scrollTop = offsetTop;	
+			//document.documentElement.style.transform=  "translateY("+ offsetTop +")";
+		});
+	}
+</script>

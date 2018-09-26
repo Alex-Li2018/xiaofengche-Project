@@ -1,0 +1,413 @@
+
+//样式
+@bgColor : #ffffff;
+@borderColor : #ccc;
+@mainColor : #52b6ec;
+@navColor : #00b8ee;
+@mostColor : #52b6ec;
+
+//混入
+.hTag(@fs:30px;@color:@mostColor) {
+	font-size: @fs;
+	color: @color;
+}
+
+.spanTag(@height:80px) {
+	margin-top: 10px;
+	//行内块在页面中可以居中对齐
+	display: inline-block;
+	height: @height;
+	width: 77px;
+	border-top: 2px solid @mostColor;
+}
+
+
+//-----------------头部导航开始---------------
+
+#header {
+	border-bottom: 1px solid @borderColor;
+	.navbar-default {
+		background-color: @bgColor;
+		margin-bottom: 0;
+		border: none;
+		.navbar-brand{
+			display: block;
+			margin-right: 50px;
+			//嵌套的At-Rules和冒泡
+			@media (min-width: 100px) {
+				width: 121px;
+				height: 60px;
+				background: url(../img/logo_min.png) no-repeat left center; 
+			}
+			
+			@media (min-width: 1200px) {
+				width: 300px;
+				height: 60px;
+				background: url(../img/logo.png) no-repeat left center; 	
+			}
+		}
+		.navbar-nav {
+			margin-right: 80px;
+			li {
+				a {
+					display: block;
+					height: 64px;
+					line-height: 34px;
+					font-size: 16px;
+					color: #a1a1a1;
+					&:hover {
+						color: #fff;
+					}
+				}
+				.dropdown-menu {
+					a {
+						height: 200px;
+						padding: 5px 20px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.navbar-default .navbar-nav > li.active > a,
+.navbar-default .navbar-nav > li.active:focus > a,
+.navbar-default .navbar-nav > li.active:hover > a,
+.navbar-default .navbar-nav > li:hover > a,
+.navbar-default .navbar-nav > li:focus > a,
+.navbar-default .navbar-nav > li.active > a:focus,
+.navbar-default .navbar-nav > li.active:focus > a:focus,
+.navbar-default .navbar-nav > li.active:hover > a:focus,
+.navbar-default .navbar-nav > li:hover > a:focus,
+.navbar-default .navbar-nav > li:focus > a:focus {
+  background-color: @mostColor;
+  color: #fff;
+}
+//-----------------头部导航结束---------------
+
+//-----------------轮播图开始---------------
+#mainSlide {
+	height: 767px;
+	background: url(../img/ppt_bg.jpg) no-repeat center; 
+	.carousel {
+		padding-top: 90px;
+		text-align: center;
+		//淡入淡出的效果
+		//position: relative;
+		.item {
+			  transition: opacity ease-in-out 2s;
+			  height: 678px;
+			  //left: 0 !important;
+			  //opacity: 0;
+			  //z-index: 1;
+			  //top: 0;
+			  //width: 100%;
+			  //display: block !important; 
+			&.active {
+				 //position: absolute;
+				//opacity: 1;
+			  //transition: opacity ease-in-out 200ms;
+			  //z-index: 2;
+			}
+			//轮播图的内容
+			.carousel-content {
+				height: 658px;
+				//轮播图的文字介绍
+				.title {
+					height: 178px;
+					text-align: center;
+					> h3 {
+						font-size: 40px;
+						text-shadow: 0 3px rgba(0, 0, 0, 0.1);
+						color: @bgColor;
+					} 
+				}
+				.pic {
+					text-align: center;
+				}
+			}	
+		}
+		
+	}
+}
+//-----------------轮播图结束---------------
+
+//-----------------服务与支持开始---------------
+#service {
+	.container {
+		.boxfirst {
+			padding:50px 30px;
+			.boxTitle {
+				padding-bottom: 80px;
+				text-align: center;
+				> h2 {
+					.hTag();
+				}
+				> span {
+					.spanTag();
+				}
+			}
+			.row {
+
+				//媒体查询分5屏
+				@media (min-width:997px) {
+					.col-md-set5 {
+						width: 20%;
+						float: left;
+					} 
+				}
+				
+				.col-md-set5,
+				.col-sm-6, 
+				.col-xs-12 {
+						transition: all .2s;
+					//鼠标移入的时候加一个向上移动的呼吸效果
+						&:hover {
+							transition: all .2s;
+							transform: translateY(-10px);
+							box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+						}
+					.center {
+						text-align: center;
+						.icon-md {
+							 font-size: 24px;
+						    height: 140px;
+						    width: 140px;
+						    line-height: 68px;
+						    color: #fff;
+						    margin-right: 10px;
+						    text-align: center;
+						    display: inline-block;
+						    margin-bottom: 10px;
+						}
+						.icon-serve1 {
+							background: url(../img/serve1.png) no-repeat 0 center;
+						}
+						.icon-serve2 {
+							background: url(../img/serve2.png) no-repeat 0 center;
+						}
+						.icon-serve3 {
+							background: url(../img/serve3.png) no-repeat 0 center;
+						}
+						h4 {
+							font-size: 22px;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+}
+//-----------------服务与支持结束---------------
+
+//-----------------产品展示开始---------------
+
+#product {
+	.box {
+		background: #f1f6f9;
+		padding: 50px 30px 30px 30px;
+		.title {
+			padding-bottom: 40px;
+			text-align:center;
+			> h2 {
+				.hTag();
+			}
+			> span {
+				.spanTag(40px);
+			}
+		}
+		.row {
+				.txtPic {
+					 margin: 0 20px 20px 0;
+				    text-align: center;
+				    background: #fff;
+				    padding: 10px;
+				    border-bottom: 1px solid #e1e1e1;
+					> a {
+						width: 100%;
+						height: 100%;
+						display: block;
+						text-decoration: none;
+						 > img {
+						 	transition: all .2s;
+						 	transform: scale(1);
+						 	&:hover {
+						 		transition: all .2s;
+						 		transform: scale(1.05);
+						 	}
+						 }
+						 > h5 {
+						    margin: 0;
+						    padding: 10px 0 0 0;
+						    white-space: nowrap;
+						    text-overflow: ellipsis;
+						    font-size: 16px;
+						    color: #374552;
+						    text-align: left;
+						    overflow: hidden;
+						}
+						> p {
+							 padding: 5px 0 0 0;
+						    white-space: nowrap;
+						    text-overflow: ellipsis;
+						    font-size: 14px;
+						    color: #a0a9b2;
+						    font-style: italic;
+						    display: block;
+						    text-align: left;
+						    overflow: hidden;
+						}
+					}
+				}	
+		}
+	}
+}
+//-----------------产品展示结束---------------
+
+//-----------------我们的客户开始---------------
+#myClient {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	.box {
+		.title {
+			text-align:center;
+			> h2 {
+				.hTag();
+			}
+			> span {
+				.spanTag(40px);
+			}
+		}
+		.row {
+			>div {
+				padding: 15px 15px;
+			}
+		}
+	}
+}
+//-----------------我们的客户结束---------------
+
+//-----------------关于我们开始-----------------
+#aboutUS {
+	padding-top: 60px;
+	height: 640px;
+	width: 100%;
+	background: url(../img/about_bg.jpg) center;
+	.container {
+		.title {
+			text-align:center;
+			> h2 {
+				.hTag();
+				color: #fff;
+			}
+			> span {
+				.spanTag(40px);
+				border-color: #fff;
+			}
+		}
+		.content {
+			text-align: center;
+			color: #fff;
+			font-size: 16px;
+
+		}
+	}
+}
+//-----------------关于我们结束-----------------
+
+//-----------------联系我们结束-----------------
+#contactus {
+	height: 242px;
+	width: 100%;
+	background: url(../img/content_bg.png) center;
+	.row {
+		padding: 70px 0;
+		.col-sm-4, .col-xs-12 {
+			text-align: center;
+			> i {
+				width: 80px;
+				height: 70px;
+				display: inline-block;
+				&.icon-1 {
+					background: url(../img/content_tel.png) center;
+			  	}
+				&.icon-2 {
+					background: url(../img/content_ad.png) center;
+			 	}
+			 &.icon-3 {
+					background: url(../img/content_em.png) center;
+			 	}
+			}
+			> p {
+				font-size: 16px;
+				color: #fff;
+				padding: 10px 0;
+			}
+			
+		}
+	}
+}
+//-----------------联系我们结束-----------------
+
+//-----------------客服开始-----------------
+#scrollsidebar {
+	//客服模块
+	position:absolute; 
+	z-index:999; 
+	right: 0;
+	top: 350px;
+	.side_content {
+		display: none;
+		width: 154px;
+		background-color: #fff;
+		border: 1px solid #0096de;
+		.side_title {
+			height: 46px;
+			background: url(../img/sidebar_bg.png) no-repeat;
+			background-position: -195px 0;
+			> a {
+				float: right;
+			   display: block;
+			   width: 21px;
+			   height: 16px;
+			   margin: 16px 10px 0 0;
+				background: url(../img/sidebar_bg.png) no-repeat;
+				background-position: -44px 0;	
+			}
+		}
+		.side_center {
+			padding: 5px 20px;
+			text-align: center;
+			.custom_service {
+				border-bottom: 1px solid #ccc;
+			}
+			.other {
+				border-bottom: 1px solid #ccc;
+			}
+		}
+	}
+	//客服按钮
+	.show_btn {
+		
+		 width: 25px;
+		 height: 112px;
+	    overflow: hidden;
+	    margin-top: 50px;
+	    float: left;
+	    cursor: pointer;
+	    background: url(../img/sidebar_bg.png) no-repeat;
+	    background-position: -119px 0;
+	}
+}
+//-----------------客服结束-----------------
+
+//-----------------底部开始-----------------
+footer {
+	line-height: 90px;
+	width: 100%;
+	text-align: center;
+	font-size: 20px;
+	color: #666;
+}
+//-----------------底部结束-----------------
